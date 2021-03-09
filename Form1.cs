@@ -270,6 +270,11 @@ namespace Assign4
             {
                 LinearM.Text = LinearM.Text + (char)e.KeyValue;
             }
+            else if(e.KeyValue == 189)
+            {
+                if (LinearM.Text.Length == 0)
+                    LinearM.Text = "-";
+            }
             else if (e.KeyValue == 190)
             {
                 if (LinearM.Text.Length == 0)
@@ -295,6 +300,11 @@ namespace Assign4
             if (e.KeyValue > 47 && e.KeyValue < 56)
             {
                 LinearB.Text = LinearB.Text + (char)e.KeyValue;
+            }
+            else if (e.KeyValue == 189)
+            {
+                if (LinearB.Text.Length == 0)
+                    LinearB.Text = "-";
             }
             else if (e.KeyValue == 190)
             {
