@@ -313,7 +313,7 @@ namespace Assign4
             this.LinearEqButton.TabIndex = 21;
             this.LinearEqButton.Text = "Graph";
             this.LinearEqButton.UseVisualStyleBackColor = true;
-            this.LinearEqButton.Click += new System.EventHandler(this.button1_Click);
+            this.LinearEqButton.Click += new System.EventHandler(this.LinearGraphButton_Click);
             // 
             // label8
             // 

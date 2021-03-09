@@ -169,6 +169,7 @@ namespace Assign4
                 XMax.Value = XMin.Value + 1;
             }
             DrawAxies();
+            LinearGraph();
         }
 
         private void XMax_ValueChanged(object sender, EventArgs e)
@@ -178,6 +179,7 @@ namespace Assign4
                 XMin.Value = XMax.Value - 1;
             }
             DrawAxies();
+            LinearGraph();
         }
 
         private void YMin_ValueChanged(object sender, EventArgs e)
@@ -187,6 +189,7 @@ namespace Assign4
                 YMax.Value = YMin.Value + 1;
             }
             DrawAxies();
+            LinearGraph();
         }
 
         private void YMax_ValueChanged(object sender, EventArgs e)
@@ -196,19 +199,26 @@ namespace Assign4
                 YMin.Value = YMax.Value - 1;
             }
             DrawAxies();
+            LinearGraph();
         }
 
         private void XInterval_ValueChanged(object sender, EventArgs e)
         {
             DrawAxies();
+            LinearGraph();
         }
 
         private void YInterval_ValueChanged(object sender, EventArgs e)
         {
             DrawAxies();
+            LinearGraph();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LinearGraphButton_Click(object sender, EventArgs e)
+        {
+            LinearGraph();
+        }
+        public void LinearGraph()
         {
             ColorDialog MyDialog = new ColorDialog();
             MyDialog.AllowFullOpen = false;
@@ -218,12 +228,12 @@ namespace Assign4
             decimal? yminpoint = null;
             decimal? xmaxpoint = null;
             decimal? xminpoint = null;
-            for(decimal i = XMin.Value; XMin.Value <= i && i <= XMax.Value; i = i + (decimal)0.1)
+            for (decimal i = XMin.Value; XMin.Value <= i && i <= XMax.Value; i = i + (decimal)0.1)
             {
                 decimal point = Linear(Convert.ToDecimal(LinearM.Text), i, Convert.ToDecimal(LinearB.Text));
-                if(point < YMax.Value && point > YMin.Value)
+                if (point <= YMax.Value && point >= YMin.Value)
                 {
-                    if(yminpoint == null)
+                    if (yminpoint == null || xminpoint == null)
                     {
                         yminpoint = point;
                         xminpoint = i;
@@ -235,16 +245,16 @@ namespace Assign4
                     }
                 }
             }
-            if(yminpoint == null || ymaxpoint == null)
+            if (yminpoint == null || ymaxpoint == null)
             {
                 MessageBox.Show("line is not of the graph");
             }
-            g.DrawLine(new Pen(Color.Black), (float)(ymaxpoint / YDif() * 800), (float)(xmaxpoint / XDif() * 800), (float)(yminpoint / YDif() * 800), (float)(xminpoint/XDif()*800));
+            g.DrawLine(new Pen(Color.Black), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));
             Graph.Image = image;
         }
         public decimal Linear(decimal m, decimal x, decimal b)
         {
-            return m * x + b;
+            return (m * x) + b;
         }
         //makes sure only things I want can be input
         private void LinearM_KeyDown(object sender, KeyEventArgs e)
