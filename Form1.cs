@@ -207,5 +207,99 @@ namespace Assign4
         {
             DrawAxies();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.AllowFullOpen = false;
+            // Allows the user to get help. (The default is false.)
+            MyDialog.ShowHelp = true;
+            decimal? ymaxpoint = null;
+            decimal? yminpoint = null;
+            decimal? xmaxpoint = null;
+            decimal? xminpoint = null;
+            for(decimal i = XMin.Value; XMin.Value <= i && i <= XMax.Value; i = i + (decimal)0.1)
+            {
+                decimal point = Linear(Convert.ToDecimal(LinearM.Text), i, Convert.ToDecimal(LinearB.Text));
+                if(point < YMax.Value && point > YMin.Value)
+                {
+                    if(yminpoint == null)
+                    {
+                        yminpoint = point;
+                        xminpoint = i;
+                    }
+                    else
+                    {
+                        ymaxpoint = point;
+                        xmaxpoint = i;
+                    }
+                }
+            }
+            if(yminpoint == null || ymaxpoint == null)
+            {
+                MessageBox.Show("line is not of the graph");
+            }
+            g.DrawLine(new Pen(Color.Black), (float)(ymaxpoint / YDif() * 800), (float)(xmaxpoint / XDif() * 800), (float)(yminpoint / YDif() * 800), (float)(xminpoint/XDif()*800));
+            Graph.Image = image;
+        }
+        public decimal Linear(decimal m, decimal x, decimal b)
+        {
+            return m * x + b;
+        }
+        //makes sure only things I want can be input
+        private void LinearM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue > 47 && e.KeyValue < 56)
+            {
+                LinearM.Text = LinearM.Text + (char)e.KeyValue;
+            }
+            else if (e.KeyValue == 190)
+            {
+                if (LinearM.Text.Length == 0)
+                    LinearM.Text = "0.";
+                else if (LinearM.Text.Contains("."))
+                    return;
+                LinearM.Text = LinearM.Text + ".";
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                if (LinearM.Text.Length == 0)
+                    return;
+                else
+                {
+                    LinearM.Text = LinearM.Text.Substring(0, LinearM.Text.Length - 1);
+                }
+
+            }
+        }
+        //makes sure only things I want can be input
+        private void LinearB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue > 47 && e.KeyValue < 56)
+            {
+                LinearB.Text = LinearB.Text + (char)e.KeyValue;
+            }
+            else if (e.KeyValue == 190)
+            {
+                if (LinearB.Text.Length == 0)
+                {
+                    LinearB.Text = "0.";
+                    return;
+                }
+                else if (LinearB.Text.Contains("."))
+                    return;
+                LinearB.Text = LinearB.Text + ".";
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                if (LinearB.Text.Length == 0)
+                    return;
+                else
+                {
+                    LinearB.Text = LinearB.Text.Substring(0, LinearB.Text.Length - 1);
+                }
+
+            }
+        }
     }
 }

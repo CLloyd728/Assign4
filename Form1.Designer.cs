@@ -43,9 +43,12 @@ namespace Assign4
             this.XInterval = new System.Windows.Forms.NumericUpDown();
             this.YMax = new System.Windows.Forms.NumericUpDown();
             this.YInterval = new System.Windows.Forms.NumericUpDown();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.colorDialog2 = new System.Windows.Forms.ColorDialog();
-            this.colorDialog3 = new System.Windows.Forms.ColorDialog();
+            this.LinearEqButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.LinearB = new System.Windows.Forms.TextBox();
+            this.LinearM = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YMin)).BeginInit();
@@ -302,12 +305,78 @@ namespace Assign4
             0});
             this.YInterval.ValueChanged += new System.EventHandler(this.YInterval_ValueChanged);
             // 
+            // LinearEqButton
+            // 
+            this.LinearEqButton.Location = new System.Drawing.Point(1288, 96);
+            this.LinearEqButton.Name = "LinearEqButton";
+            this.LinearEqButton.Size = new System.Drawing.Size(75, 23);
+            this.LinearEqButton.TabIndex = 21;
+            this.LinearEqButton.Text = "Graph";
+            this.LinearEqButton.UseVisualStyleBackColor = true;
+            this.LinearEqButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(1046, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(293, 25);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Linear Equations (y = mx + b)";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(1037, 96);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 24);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "y = ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1153, 94);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 24);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "*x +";
+            // 
+            // LinearB
+            // 
+            this.LinearB.Location = new System.Drawing.Point(1202, 98);
+            this.LinearB.Name = "LinearB";
+            this.LinearB.ReadOnly = true;
+            this.LinearB.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.LinearB.Size = new System.Drawing.Size(78, 20);
+            this.LinearB.TabIndex = 29;
+            this.LinearB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LinearB_KeyDown);
+            // 
+            // LinearM
+            // 
+            this.LinearM.Location = new System.Drawing.Point(1069, 98);
+            this.LinearM.Name = "LinearM";
+            this.LinearM.ReadOnly = true;
+            this.LinearM.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.LinearM.Size = new System.Drawing.Size(78, 20);
+            this.LinearM.TabIndex = 30;
+            this.LinearM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LinearM_KeyDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1441, 922);
+            this.Controls.Add(this.LinearM);
+            this.Controls.Add(this.LinearB);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LinearEqButton);
             this.Controls.Add(this.YInterval);
             this.Controls.Add(this.YMax);
             this.Controls.Add(this.XInterval);
@@ -352,9 +421,12 @@ namespace Assign4
         private System.Windows.Forms.NumericUpDown XInterval;
         private System.Windows.Forms.NumericUpDown YMax;
         private System.Windows.Forms.NumericUpDown YInterval;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.ColorDialog colorDialog2;
-        private System.Windows.Forms.ColorDialog colorDialog3;
+        private System.Windows.Forms.Button LinearEqButton;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox LinearB;
+        private System.Windows.Forms.TextBox LinearM;
     }
 }
 
