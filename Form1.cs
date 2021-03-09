@@ -216,10 +216,17 @@ namespace Assign4
 
         private void LinearGraphButton_Click(object sender, EventArgs e)
         {
+            if (LinearM.Text.Length == 0 || LinearB.Text.Length == 0)
+            {
+                MessageBox.Show("Please fill in all of the fields before trying to graph the Linear equation.");
+                return;
+            }
             LinearGraph();
         }
         public void LinearGraph()
         {
+            if (LinearM.Text.Length == 0 || LinearB.Text.Length == 0)
+                return;
             ColorDialog MyDialog = new ColorDialog();
             MyDialog.AllowFullOpen = false;
             // Allows the user to get help. (The default is false.)
