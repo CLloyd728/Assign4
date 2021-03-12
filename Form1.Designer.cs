@@ -1,4 +1,4 @@
-﻿
+
 namespace Assign4
 {
     partial class Form1
@@ -49,6 +49,26 @@ namespace Assign4
             this.label9 = new System.Windows.Forms.Label();
             this.LinearB = new System.Windows.Forms.TextBox();
             this.LinearM = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.QuadA = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.QuadB = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.QuadC = new System.Windows.Forms.TextBox();
+            this.QuadButton = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.CircleH = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.CircleK = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.CircleR = new System.Windows.Forms.TextBox();
+            this.CircleButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YMin)).BeginInit();
@@ -365,12 +385,220 @@ namespace Assign4
             this.LinearM.TabIndex = 30;
             this.LinearM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LinearM_KeyDown);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(1006, 177);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(381, 25);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Quardratic Equations (y = ax² + bx + c)";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(927, 222);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(40, 24);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "y = ";
+            // 
+            // QuadA
+            // 
+            this.QuadA.Location = new System.Drawing.Point(973, 222);
+            this.QuadA.Name = "QuadA";
+            this.QuadA.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.QuadA.Size = new System.Drawing.Size(78, 20);
+            this.QuadA.TabIndex = 33;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1057, 222);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 24);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "* x² +";
+            // 
+            // QuadB
+            // 
+            this.QuadB.Location = new System.Drawing.Point(1116, 222);
+            this.QuadB.Name = "QuadB";
+            this.QuadB.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.QuadB.Size = new System.Drawing.Size(78, 20);
+            this.QuadB.TabIndex = 35;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(1200, 222);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 24);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "* x +";
+            // 
+            // QuadC
+            // 
+            this.QuadC.Location = new System.Drawing.Point(1254, 222);
+            this.QuadC.Name = "QuadC";
+            this.QuadC.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.QuadC.Size = new System.Drawing.Size(78, 20);
+            this.QuadC.TabIndex = 37;
+            // 
+            // QuadButton
+            // 
+            this.QuadButton.Location = new System.Drawing.Point(1354, 222);
+            this.QuadButton.Name = "QuadButton";
+            this.QuadButton.Size = new System.Drawing.Size(75, 23);
+            this.QuadButton.TabIndex = 38;
+            this.QuadButton.Text = "Graph";
+            this.QuadButton.UseVisualStyleBackColor = true;
+            this.QuadButton.Click += new System.EventHandler(this.QuadButton_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(944, 494);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(388, 25);
+            this.label15.TabIndex = 39;
+            this.label15.Text = "Circle Equations ( (x - h)² + (y - k)² = r² )";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(869, 549);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(42, 24);
+            this.label16.TabIndex = 40;
+            this.label16.Text = "(x - ";
+            // 
+            // CircleH
+            // 
+            this.CircleH.Location = new System.Drawing.Point(911, 554);
+            this.CircleH.Name = "CircleH";
+            this.CircleH.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.CircleH.Size = new System.Drawing.Size(78, 20);
+            this.CircleH.TabIndex = 41;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(995, 549);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(21, 24);
+            this.label17.TabIndex = 42;
+            this.label17.Text = ")²";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(1022, 549);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(21, 24);
+            this.label18.TabIndex = 43;
+            this.label18.Text = "+";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(1178, 549);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(21, 24);
+            this.label19.TabIndex = 46;
+            this.label19.Text = ")²";
+            // 
+            // CircleK
+            // 
+            this.CircleK.Location = new System.Drawing.Point(1094, 554);
+            this.CircleK.Name = "CircleK";
+            this.CircleK.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.CircleK.Size = new System.Drawing.Size(78, 20);
+            this.CircleK.TabIndex = 45;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(1052, 549);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(41, 24);
+            this.label20.TabIndex = 44;
+            this.label20.Text = "(y - ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(1205, 549);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(21, 24);
+            this.label21.TabIndex = 47;
+            this.label21.Text = "=";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(1313, 549);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(15, 24);
+            this.label22.TabIndex = 48;
+            this.label22.Text = "²";
+            // 
+            // CircleR
+            // 
+            this.CircleR.Location = new System.Drawing.Point(1229, 554);
+            this.CircleR.Name = "CircleR";
+            this.CircleR.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.CircleR.Size = new System.Drawing.Size(78, 20);
+            this.CircleR.TabIndex = 49;
+            // 
+            // CircleButton
+            // 
+            this.CircleButton.Location = new System.Drawing.Point(1354, 552);
+            this.CircleButton.Name = "CircleButton";
+            this.CircleButton.Size = new System.Drawing.Size(75, 23);
+            this.CircleButton.TabIndex = 50;
+            this.CircleButton.Text = "Graph";
+            this.CircleButton.UseVisualStyleBackColor = true;
+            this.CircleButton.Click += new System.EventHandler(this.CircleButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1441, 922);
+            this.Controls.Add(this.CircleButton);
+            this.Controls.Add(this.CircleR);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.CircleK);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.CircleH);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.QuadButton);
+            this.Controls.Add(this.QuadC);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.QuadB);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.QuadA);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.LinearM);
             this.Controls.Add(this.LinearB);
             this.Controls.Add(this.label9);
@@ -427,6 +655,25 @@ namespace Assign4
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox LinearB;
         private System.Windows.Forms.TextBox LinearM;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox QuadA;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox QuadB;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox QuadC;
+        private System.Windows.Forms.Button QuadButton;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox CircleH;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox CircleK;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox CircleR;
+        private System.Windows.Forms.Button CircleButton;
     }
 }
-
