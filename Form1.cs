@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,9 +33,9 @@ namespace Assign4
             refresh();
             //if the axis should exist on screen it draws it
             if (XMax.Value > 0 && XMin.Value < 0)
-            { 
+            {
                 //finds where the 0 should be
-                decimal point = (-1*XMin.Value)/(XDif())*800;
+                decimal point = (-1 * XMin.Value) / (XDif()) * 800;
                 //draws it and then prints it onto the picture box
                 g.DrawLine(new Pen(Color.Black), (float)point, 0, (float)point, 800);
                 Graph.Image = image;
@@ -59,8 +59,15 @@ namespace Assign4
             decimal XVal = XMin.Value;
             decimal YVal = YMax.Value;
             int YCount = 0;
-            decimal Xpoint = 800 -((-1 * YMin.Value) / (YDif()) * 800);
-            decimal Ypoint = (-1 * XMin.Value) / (XDif()) * 800;
+            decimal Ypoint = 0;
+            decimal Xpoint = 0;
+            if (YDif() != 0)
+                Xpoint = 800 - ((-1 * YMin.Value) / (YDif()) * 800);
+
+            // was getting a divide by zero error sometimes so added conditional
+            if (XDif() == 0)
+                return;
+            Ypoint = (-1 * XMin.Value) / (XDif()) * 800;
             //As it works it's way across the X axis
             while (Xmark < 800)
             {
@@ -73,15 +80,17 @@ namespace Assign4
                         //labels the ticks and has two cases for in case it needs a negative sign
                         if (XVal < 0)
                         {
-                            g.DrawString("-" + XVal.ToString(), myfont, new SolidBrush(Color.Black), (float)Xmark - 5, (float)Xpoint-20);
+                            g.DrawString("-" + XVal.ToString(), myfont, new SolidBrush(Color.Black), (float)Xmark - 5, (float)Xpoint - 20);
                         }
                         else
                         {
-                            g.DrawString(XVal.ToString(), myfont, new SolidBrush(Color.Black), (float)Xmark - 5, (float)Xpoint-20);
+                            g.DrawString(XVal.ToString(), myfont, new SolidBrush(Color.Black), (float)Xmark - 5, (float)Xpoint - 20);
                         }
                     }
                     //increments that vars
-                    g.DrawLine(new Pen(Color.Black), (float)Xmark, (float)Xpoint-5, (float)Xmark, (float)Xpoint+5);
+                    g.DrawLine(new Pen(Color.Black), (float)Xmark, (float)Xpoint - 5, (float)Xmark, (float)Xpoint + 5);
+                    if (XDif() == 0)
+                        return;
                     Xmark += (XInterval.Value / XDif() * 800);
                     XCount++;
                     XVal += XInterval.Value;
@@ -124,13 +133,13 @@ namespace Assign4
                             g.DrawString(YVal.ToString(), myfont, new SolidBrush(Color.Black), (float)Ypoint - 20, (float)Ymark - 5);
                         }
                     }
-                    g.DrawLine(new Pen(Color.Black), (float)Ypoint-5, (float)Ymark, (float)Ypoint+5, (float)Ymark);
+                    g.DrawLine(new Pen(Color.Black), (float)Ypoint - 5, (float)Ymark, (float)Ypoint + 5, (float)Ymark);
                     Ymark += YInterval.Value * (800 / YDif());
                     YCount++;
                     YVal -= YInterval.Value;
                 }
                 else
-                { 
+                {
                     if (YCount % 2 == 0 && YCount != 0 && YVal != 0)
                     {
                         if (YVal < 0)
@@ -146,7 +155,7 @@ namespace Assign4
                     Ymark += YInterval.Value * (800 / YDif());
                     YCount++;
                     YVal -= YInterval.Value;
-            }
+                }
             }
             //adds it all to the picture box
             Graph.Image = image;
@@ -164,12 +173,14 @@ namespace Assign4
         //Several functions That make sure that the Mins and maxes are correct 
         private void XMin_ValueChanged(object sender, EventArgs e)
         {
-            if(XMin.Value > XMax.Value)
+            if (XMin.Value > XMax.Value)
             {
                 XMax.Value = XMin.Value + 1;
             }
             DrawAxies();
             LinearGraph();
+            CircleGraph();
+            QuadraticGraph();
         }
 
         private void XMax_ValueChanged(object sender, EventArgs e)
@@ -180,6 +191,8 @@ namespace Assign4
             }
             DrawAxies();
             LinearGraph();
+            CircleGraph();
+            QuadraticGraph();
         }
 
         private void YMin_ValueChanged(object sender, EventArgs e)
@@ -190,6 +203,8 @@ namespace Assign4
             }
             DrawAxies();
             LinearGraph();
+            CircleGraph();
+            QuadraticGraph();
         }
 
         private void YMax_ValueChanged(object sender, EventArgs e)
@@ -200,18 +215,24 @@ namespace Assign4
             }
             DrawAxies();
             LinearGraph();
+            CircleGraph();
+            QuadraticGraph();
         }
 
         private void XInterval_ValueChanged(object sender, EventArgs e)
         {
             DrawAxies();
             LinearGraph();
+            CircleGraph();
+            QuadraticGraph();
         }
 
         private void YInterval_ValueChanged(object sender, EventArgs e)
         {
             DrawAxies();
             LinearGraph();
+            CircleGraph();
+            QuadraticGraph();
         }
 
         private void LinearGraphButton_Click(object sender, EventArgs e)
@@ -255,8 +276,9 @@ namespace Assign4
             if (yminpoint == null || ymaxpoint == null)
             {
                 MessageBox.Show("line is not of the graph");
+                return;
             }
-            g.DrawLine(new Pen(Color.Black), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));
+            g.DrawLine(new Pen(Color.Black), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));    
             Graph.Image = image;
         }
         public decimal Linear(decimal m, decimal x, decimal b)
@@ -270,7 +292,7 @@ namespace Assign4
             {
                 LinearM.Text = LinearM.Text + (char)e.KeyValue;
             }
-            else if(e.KeyValue == 189)
+            else if (e.KeyValue == 189)
             {
                 if (LinearM.Text.Length == 0)
                     LinearM.Text = "-";
@@ -325,8 +347,91 @@ namespace Assign4
                 {
                     LinearB.Text = LinearB.Text.Substring(0, LinearB.Text.Length - 1);
                 }
-
             }
+        }
+
+        private void QuadButton_Click(object sender, EventArgs e)
+        {
+            if (QuadA.Text.Length == 0 && QuadB.Text.Length == 0 && QuadC.Text.Length == 0)
+            {
+                MessageBox.Show("Please fill in all of the fields before trying to graph the Quadratic equation.", "Error");
+                return;
+            }
+            QuadraticGraph();
+        }
+
+        public void QuadraticGraph()
+        {
+            // if no input, do nothing
+            if (QuadA.Text.Length == 0 && QuadB.Text.Length == 0 && QuadC.Text.Length == 0)   
+                return;
+
+            // relative position of x based on min and max value
+            decimal sizeX = 800 / ((Math.Abs(XMin.Value) + Math.Abs(XMax.Value)));
+
+            // list of points to create curve
+            List<PointF> points = new List<PointF>();
+
+            // a, b, and c values scaled based on size of graph
+            decimal a = Convert.ToDecimal(QuadA.Text) * sizeX;
+            decimal b = Convert.ToDecimal(QuadB.Text) * sizeX;
+            decimal c = Convert.ToDecimal(QuadC.Text) * sizeX;
+
+            // get a list of all points in the range of the x axis
+            for (decimal x = XMin.Value; x < XMax.Value; x++)
+            {
+                // get y value based on x value and and to list of points
+                decimal y =  a * (x * x) + (b * x) + c;
+                points.Add(new PointF(((float)sizeX * (float)Math.Abs(XMin.Value)) + (float)x * (float)sizeX, ((float)sizeX * (float)Math.Abs(XMax.Value)) - (float)y));
+            }
+
+            // draw quadratic graph
+            g.DrawCurve(new Pen(Color.Blue), points.ToArray());
+            Graph.Image = image;
+            return;
+        }
+
+        private void CircleButton_Click(object sender, EventArgs e)
+        {
+            if (CircleH.Text.Length == 0 && CircleK.Text.Length == 0 && CircleR.Text.Length == 0)
+            {
+                MessageBox.Show("Please fill in all of the fields before trying to graph the Circle equation.", "Error");
+                return;
+            }
+            CircleGraph();
+        }
+
+        public void CircleGraph()
+        {
+            // if no input, do nothing
+            if (CircleH.Text.Length == 0 && CircleK.Text.Length == 0 && CircleR.Text.Length == 0)
+                return;
+
+            // relative postions of x and y based on min and max values
+            decimal sizeX = 800 / (Math.Abs(XMin.Value) + Math.Abs(XMax.Value));
+            decimal sizeY = 800 / (Math.Abs(YMin.Value) + Math.Abs(YMax.Value));
+            decimal sizeX1 = (Math.Abs(XMin.Value) + Math.Abs(XMax.Value)) / 2;
+            decimal sizeY1 = (Math.Abs(YMin.Value) + Math.Abs(YMax.Value)) / 2;
+
+            // h, k, and r values scaled based on size of graph
+            decimal h = Convert.ToDecimal(CircleH.Text) * sizeX;
+            decimal k = Convert.ToDecimal(CircleK.Text) * sizeY;
+            decimal r = (decimal)Math.Sqrt(Convert.ToDouble(CircleR.Text)) * sizeX;
+
+            // draw the circle graph
+            g.DrawCircle(new Pen(Color.DarkGreen), (float)h + ((float)sizeX * (float)sizeX1), ((float)sizeY * (float)sizeY1) - (float)k, (float)r);
+            Graph.Image = image;
+            return;
+        }
+    }
+
+    public static class Extensions
+    {
+        public static void DrawCircle(this Graphics g, Pen pen,
+              float centerX, float centerY, float radius)
+        {
+            g.DrawEllipse(pen, centerX - radius, centerY - radius,
+                          radius + radius, radius + radius);
         }
     }
 }
