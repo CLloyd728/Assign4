@@ -15,6 +15,7 @@ namespace Assign4
         //public variables that allow drawing on the picture box
         public Graphics g;
         public Image image;
+        public Color LinearCol = Color.Black;
         public Form1()
         {
             InitializeComponent();
@@ -242,16 +243,18 @@ namespace Assign4
                 MessageBox.Show("Please fill in all of the fields before trying to graph the Linear equation.");
                 return;
             }
+            if (LinearColor.ShowDialog() == DialogResult.OK)
+            {
+                LinearCol = LinearColor.Color;
+            }
             LinearGraph();
         }
         public void LinearGraph()
         {
             if (LinearM.Text.Length == 0 || LinearB.Text.Length == 0)
                 return;
-            ColorDialog MyDialog = new ColorDialog();
-            MyDialog.AllowFullOpen = false;
             // Allows the user to get help. (The default is false.)
-            MyDialog.ShowHelp = true;
+
             decimal? ymaxpoint = null;
             decimal? yminpoint = null;
             decimal? xmaxpoint = null;
@@ -278,7 +281,7 @@ namespace Assign4
                 MessageBox.Show("line is not of the graph");
                 return;
             }
-            g.DrawLine(new Pen(Color.Black), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));    
+            g.DrawLine(new Pen(LinearCol), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));    
             Graph.Image = image;
         }
         public decimal Linear(decimal m, decimal x, decimal b)
@@ -423,6 +426,12 @@ namespace Assign4
             Graph.Image = image;
             return;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
     public static class Extensions

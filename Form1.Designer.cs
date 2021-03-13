@@ -29,6 +29,7 @@ namespace Assign4
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Graph = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@ namespace Assign4
             this.label22 = new System.Windows.Forms.Label();
             this.CircleR = new System.Windows.Forms.TextBox();
             this.CircleButton = new System.Windows.Forms.Button();
+            this.LinearColor = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YMin)).BeginInit();
@@ -621,6 +623,7 @@ namespace Assign4
             this.Controls.Add(this.Graph);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YMin)).EndInit();
@@ -675,5 +678,9 @@ namespace Assign4
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox CircleR;
         private System.Windows.Forms.Button CircleButton;
+        private System.Windows.Forms.ColorDialog LinearColor;
+        private System.Windows.Forms.ToolTip LinearMTip;
+        private System.Windows.Forms.ToolTip LinearBTip;
+        private System.Windows.Forms.ToolTip toolTip3;
     }
 }
