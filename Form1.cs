@@ -1,11 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Assign4
@@ -16,6 +11,10 @@ namespace Assign4
         public Graphics g;
         public Image image;
         public Color LinearCol = Color.Black;
+        public Color QuadCol = Color.Black;
+        public Color CircleCol = Color.Black;
+        public Color CubicCol = Color.Black;
+        public int drawCount = 0;   // counter to keep track of number of graphs drawn
         public Form1()
         {
             InitializeComponent();
@@ -182,6 +181,7 @@ namespace Assign4
             LinearGraph();
             CircleGraph();
             QuadraticGraph();
+            CubicGraph();
         }
 
         private void XMax_ValueChanged(object sender, EventArgs e)
@@ -190,10 +190,12 @@ namespace Assign4
             {
                 XMin.Value = XMax.Value - 1;
             }
+
             DrawAxies();
             LinearGraph();
             CircleGraph();
             QuadraticGraph();
+            CubicGraph();
         }
 
         private void YMin_ValueChanged(object sender, EventArgs e)
@@ -206,6 +208,7 @@ namespace Assign4
             LinearGraph();
             CircleGraph();
             QuadraticGraph();
+            CubicGraph();
         }
 
         private void YMax_ValueChanged(object sender, EventArgs e)
@@ -218,6 +221,7 @@ namespace Assign4
             LinearGraph();
             CircleGraph();
             QuadraticGraph();
+            CubicGraph();
         }
 
         private void XInterval_ValueChanged(object sender, EventArgs e)
@@ -226,6 +230,7 @@ namespace Assign4
             LinearGraph();
             CircleGraph();
             QuadraticGraph();
+            CubicGraph();
         }
 
         private void YInterval_ValueChanged(object sender, EventArgs e)
@@ -234,6 +239,7 @@ namespace Assign4
             LinearGraph();
             CircleGraph();
             QuadraticGraph();
+            CubicGraph();
         }
 
         private void LinearGraphButton_Click(object sender, EventArgs e)
@@ -243,6 +249,7 @@ namespace Assign4
                 MessageBox.Show("Please fill in all of the fields before trying to graph the Linear equation.");
                 return;
             }
+            ColorDialog LinearColor = new ColorDialog();
             if (LinearColor.ShowDialog() == DialogResult.OK)
             {
                 LinearCol = LinearColor.Color;
@@ -253,8 +260,7 @@ namespace Assign4
         {
             if (LinearM.Text.Length == 0 || LinearB.Text.Length == 0)
                 return;
-            // Allows the user to get help. (The default is false.)
-
+            
             decimal? ymaxpoint = null;
             decimal? yminpoint = null;
             decimal? xmaxpoint = null;
@@ -281,6 +287,12 @@ namespace Assign4
                 MessageBox.Show("line is not of the graph");
                 return;
             }
+
+            // clear graph if count = 4
+            if (drawCount % 4 == 0)
+                DrawAxies();
+            drawCount += 1;
+
             g.DrawLine(new Pen(LinearCol), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));    
             Graph.Image = image;
         }
@@ -291,7 +303,7 @@ namespace Assign4
         //makes sure only things I want can be input
         private void LinearM_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 56)
+            if (e.KeyValue > 47 && e.KeyValue < 58)
             {
                 LinearM.Text = LinearM.Text + (char)e.KeyValue;
             }
@@ -316,13 +328,12 @@ namespace Assign4
                 {
                     LinearM.Text = LinearM.Text.Substring(0, LinearM.Text.Length - 1);
                 }
-
             }
         }
         //makes sure only things I want can be input
         private void LinearB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 56)
+            if (e.KeyValue > 47 && e.KeyValue < 58)
             {
                 LinearB.Text = LinearB.Text + (char)e.KeyValue;
             }
@@ -355,10 +366,18 @@ namespace Assign4
 
         private void QuadButton_Click(object sender, EventArgs e)
         {
+            // if no input, do nothing
             if (QuadA.Text.Length == 0 && QuadB.Text.Length == 0 && QuadC.Text.Length == 0)
             {
                 MessageBox.Show("Please fill in all of the fields before trying to graph the Quadratic equation.", "Error");
                 return;
+            }
+
+            // get color for current graph
+            ColorDialog QuadColor = new ColorDialog();
+            if (QuadColor.ShowDialog() == DialogResult.OK)
+            {
+                QuadCol = QuadColor.Color;
             }
             QuadraticGraph();
         }
@@ -366,7 +385,7 @@ namespace Assign4
         public void QuadraticGraph()
         {
             // if no input, do nothing
-            if (QuadA.Text.Length == 0 && QuadB.Text.Length == 0 && QuadC.Text.Length == 0)   
+            if (QuadA.Text.Length == 0 || QuadB.Text.Length == 0 || QuadC.Text.Length == 0)   
                 return;
 
             // relative position of x based on min and max value
@@ -374,6 +393,7 @@ namespace Assign4
 
             // list of points to create curve
             List<PointF> points = new List<PointF>();
+            bool onGraph = false;
 
             // a, b, and c values scaled based on size of graph
             decimal a = Convert.ToDecimal(QuadA.Text) * sizeX;
@@ -381,25 +401,50 @@ namespace Assign4
             decimal c = Convert.ToDecimal(QuadC.Text) * sizeX;
 
             // get a list of all points in the range of the x axis
-            for (decimal x = XMin.Value; x < XMax.Value; x++)
+            for (decimal x = XMin.Value; x < XMax.Value; x+= (decimal)0.1)
             {
                 // get y value based on x value and and to list of points
                 decimal y =  a * (x * x) + (b * x) + c;
-                points.Add(new PointF(((float)sizeX * (float)Math.Abs(XMin.Value)) + (float)x * (float)sizeX, ((float)sizeX * (float)Math.Abs(XMax.Value)) - (float)y));
+                PointF curPoint = new PointF((float)((sizeX * Math.Abs(XMin.Value)) + x * sizeX), (float)((sizeX * Math.Abs(XMax.Value)) - y));
+                points.Add(curPoint);
+
+                // set flag to true if there is a point within bounds
+                if ((curPoint.X <= 800 && curPoint.X >= 0) && (curPoint.Y <= 800 && curPoint.Y >= 0))
+                    onGraph = true;
             }
 
+            // don't draw graph if no visible points exist
+            if (!onGraph)
+            {
+                MessageBox.Show("Line is not of the graph", "Out of bounds error");
+                return;
+            }
+
+            // clear graph if count = 4
+            if (drawCount % 4 == 0)
+                DrawAxies();
+            drawCount += 1;
+
             // draw quadratic graph
-            g.DrawCurve(new Pen(Color.Blue), points.ToArray());
+            g.DrawCurve(new Pen(QuadCol), points.ToArray());
             Graph.Image = image;
             return;
         }
 
         private void CircleButton_Click(object sender, EventArgs e)
         {
-            if (CircleH.Text.Length == 0 && CircleK.Text.Length == 0 && CircleR.Text.Length == 0)
+            // if no input, do nothing
+            if (CircleH.Text.Length == 0 || CircleK.Text.Length == 0 || CircleR.Text.Length == 0)
             {
                 MessageBox.Show("Please fill in all of the fields before trying to graph the Circle equation.", "Error");
                 return;
+            }
+
+            // get color for current graph
+            ColorDialog CircleColor = new ColorDialog();
+            if (CircleColor.ShowDialog() == DialogResult.OK)
+            {
+                CircleCol = CircleColor.Color;
             }
             CircleGraph();
         }
@@ -410,7 +455,7 @@ namespace Assign4
             if (CircleH.Text.Length == 0 && CircleK.Text.Length == 0 && CircleR.Text.Length == 0)
                 return;
 
-            // relative postions of x and y based on min and max values
+            // relative postions of x and y based on min and max values 
             decimal sizeX = 800 / (Math.Abs(XMin.Value) + Math.Abs(XMax.Value));
             decimal sizeY = 800 / (Math.Abs(YMin.Value) + Math.Abs(YMax.Value));
             decimal sizeX1 = (Math.Abs(XMin.Value) + Math.Abs(XMax.Value)) / 2;
@@ -421,21 +466,94 @@ namespace Assign4
             decimal k = Convert.ToDecimal(CircleK.Text) * sizeY;
             decimal r = (decimal)Math.Sqrt(Convert.ToDouble(CircleR.Text)) * sizeX;
 
+            // verify line is on the graph
+            if (((h + (sizeX * sizeX1)) <= 0 || (h + (sizeX * sizeX1)) >= 800) || (((sizeY * sizeY1) - k) <= 0 || ((sizeY * sizeY1) - k) >= 800))
+            {
+                MessageBox.Show("Line is not of the graph", "Out of bounds error");
+                return;
+            }
+
+            // clear graph if count = 4
+            if (drawCount % 4 == 0)
+                DrawAxies();
+                drawCount += 1;
+
             // draw the circle graph
-            g.DrawCircle(new Pen(Color.DarkGreen), (float)h + ((float)sizeX * (float)sizeX1), ((float)sizeY * (float)sizeY1) - (float)k, (float)r);
+            g.DrawCircle(new Pen(CircleCol), (float)(h + (sizeX * sizeX1)), (float)((sizeY * sizeY1) - k), (float)r);
             Graph.Image = image;
             return;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void CubeButton_Click(object sender, EventArgs e)
         {
+            // if no input, do nothing
+            if (CubeA.Text.Length == 0 || CubeB.Text.Length == 0 || CubeC.Text.Length == 0 || CubeD.Text.Length == 0)
+            {
+                MessageBox.Show("Please fill in all of the fields before trying to graph the Cubic equation.", "No input error");
+                return;
+            }
 
+            // get color for current graph
+            ColorDialog CubicColor = new ColorDialog();
+            if (CubicColor.ShowDialog() == DialogResult.OK)
+            {
+                CubicCol = CubicColor.Color;
+            }
+            CubicGraph();
         }
 
+        public void CubicGraph()
+        {
+            // if no input, do nothing
+            if (CubeA.Text.Length == 0 || CubeB.Text.Length == 0 || CubeC.Text.Length == 0 || CubeD.Text.Length == 0)
+                return;
+
+            // list to hold all the points
+            List<PointF> points = new List<PointF>();
+            bool onGraph = false;
+
+            //relative position of x and y based on min and max values
+            decimal sizeX = 800 / (Math.Abs(XMin.Value) + Math.Abs(XMax.Value));
+            decimal sizeX1 = (Math.Abs(XMin.Value) + Math.Abs(XMax.Value)) / 2;
+
+            // a, b, c, and d values scaled based on graph size
+            decimal a = Convert.ToDecimal(CubeA.Text) * sizeX;
+            decimal b = Convert.ToDecimal(CubeB.Text) * sizeX;
+            decimal c = Convert.ToDecimal(CubeC.Text) * sizeX;
+            decimal d = Convert.ToDecimal(CubeD.Text) * sizeX;
+
+            // get a list of all points in the range of the x axis
+            for (decimal x = XMin.Value; x < XMax.Value; x+= (decimal)0.1)
+            {
+                // get y value based on x value and and to list of points
+                decimal y = (a * (x * x * x)) + (b * (x * x)) + (c * x) + d;
+                PointF curPoint = new PointF((float)((sizeX * sizeX1) + x * sizeX), (float)((sizeX * sizeX1) - y));
+                points.Add(curPoint);
+                if ((curPoint.X <= 800 && curPoint.X >= 0) || (curPoint.Y <= 800 || curPoint.Y >= 0))
+                    onGraph = true;
+            }
+
+            if (!onGraph)
+            {
+                MessageBox.Show("Line is not of the graph", "Out of bounds error");
+                return;
+            }
+
+            // clear graph if count = 4
+            if (drawCount % 4 == 0)
+                DrawAxies();
+            drawCount += 1;
+
+            // draw the cube graph
+            g.DrawCurve(new Pen(CubicCol), points.ToArray());
+            Graph.Image = image;
+            return;
+        }
     }
 
     public static class Extensions
     {
+        // helper function to draw circles
         public static void DrawCircle(this Graphics g, Pen pen,
               float centerX, float centerY, float radius)
         {
