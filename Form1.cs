@@ -173,7 +173,7 @@ namespace Assign4
         //Several functions That make sure that the Mins and maxes are correct 
         private void XMin_ValueChanged(object sender, EventArgs e)
         {
-            if (XMin.Value > XMax.Value)
+            if (XMin.Value >= XMax.Value)
             {
                 XMax.Value = XMin.Value + 1;
             }
@@ -186,7 +186,7 @@ namespace Assign4
 
         private void XMax_ValueChanged(object sender, EventArgs e)
         {
-            if (XMin.Value > XMax.Value)
+            if (XMin.Value >= XMax.Value)
             {
                 XMin.Value = XMax.Value - 1;
             }
@@ -200,7 +200,7 @@ namespace Assign4
 
         private void YMin_ValueChanged(object sender, EventArgs e)
         {
-            if (YMin.Value > YMax.Value)
+            if (YMin.Value >= YMax.Value)
             {
                 YMax.Value = YMin.Value + 1;
             }
@@ -213,7 +213,7 @@ namespace Assign4
 
         private void YMax_ValueChanged(object sender, EventArgs e)
         {
-            if (YMin.Value > YMax.Value)
+            if (YMin.Value >= YMax.Value)
             {
                 YMin.Value = YMax.Value - 1;
             }
@@ -244,7 +244,7 @@ namespace Assign4
 
         private void LinearGraphButton_Click(object sender, EventArgs e)
         {
-            if (LinearM.Text.Length == 0 || LinearB.Text.Length == 0)
+            if (LinearM.Text.Length == 0 || LinearB.Text.Length == 0 || LinearM.Text.Equals("-") || LinearB.Text.Equals("-"))
             {
                 MessageBox.Show("Please fill in all of the fields before trying to graph the Linear equation.");
                 return;
@@ -265,10 +265,46 @@ namespace Assign4
             decimal? yminpoint = null;
             decimal? xmaxpoint = null;
             decimal? xminpoint = null;
-            for (decimal i = XMin.Value; XMin.Value <= i && i <= XMax.Value; i = i + (decimal)0.1)
+            decimal xmin;
+            decimal xmax;
+            decimal ymin;
+            decimal ymax;
+            if(XMin.Value == 0)
+            {
+                xmin = (decimal)0.01;
+            }
+            else
+            {
+                xmin = XMin.Value;
+            }
+            if (XMax.Value == 0)
+            {
+                xmax = (decimal)0.01;
+            }
+            else
+            {
+                xmax = XMax.Value;
+            }
+            if (YMin.Value == 0)
+            {
+                ymin = (decimal)0.01;
+            }
+            else
+            {
+                ymin = YMin.Value;
+            }
+            if (YMax.Value == 0)
+            {
+                ymax = (decimal)0.01;
+            }
+            else
+            {
+                ymax = YMax.Value;
+            }
+            for (decimal i = xmin; xmin <= i && i <= xmax; i = i + (decimal)0.1)
             {
                 decimal point = Linear(Convert.ToDecimal(LinearM.Text), i, Convert.ToDecimal(LinearB.Text));
-                if (point <= YMax.Value && point >= YMin.Value)
+                if (point <= ymax && point >= ymin)
                 {
                     if (yminpoint == null || xminpoint == null)
                     {
@@ -292,8 +328,30 @@ namespace Assign4
             if (drawCount % 4 == 0)
                 DrawAxies();
             drawCount += 1;
-
-            g.DrawLine(new Pen(LinearCol), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));    
+            float x1 = (float)((xmin - xminpoint) * (800/XDif()));
+            float x2 = (float)((xmaxpoint- xmin) * (800/XDif()));
+            float y1 = (float)((ymin - yminpoint) * (800/YDif()));
+            float y2 = (float)((ymaxpoint - ymin) * (800/YDif()));
+            if(x1 < 0)
+            {
+                x1 *= -1;
+            }
+            if(x2 < 0)
+            {
+                x2 *= -1;
+            }
+            if(y1 < 0)
+            {
+                y1 *= -1;
+            }
+            if(y2 < 0)
+            {
+                y2 *= -1;
+            }
+            y1 = 800 - y1;
+            y2 = 800 - y2;
+            g.DrawLine(new Pen(LinearCol), x1, y1, x2, y2);
+            //g.DrawLine(new Pen(LinearCol), (float)(400 - (xminpoint / XMin.Value) * 400), (float)(800 - (400 - (yminpoint / YMin.Value) * 400)), (float)(400 + (xmaxpoint / XMax.Value) * 400), (float)(800 - (400 + (ymaxpoint / YMax.Value) * 400)));   
             Graph.Image = image;
         }
         public decimal Linear(decimal m, decimal x, decimal b)
