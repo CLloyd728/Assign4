@@ -29,6 +29,7 @@ namespace Assign4
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Graph = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,6 +80,15 @@ namespace Assign4
             this.CubeC = new System.Windows.Forms.TextBox();
             this.CubeD = new System.Windows.Forms.TextBox();
             this.CubeButton = new System.Windows.Forms.Button();
+            this.LinearMTip = new System.Windows.Forms.ToolTip(this.components);
+            this.LinearBTip = new System.Windows.Forms.ToolTip(this.components);
+            this.LinearGraphTip = new System.Windows.Forms.ToolTip(this.components);
+            this.XMinTip = new System.Windows.Forms.ToolTip(this.components);
+            this.XMaxTip = new System.Windows.Forms.ToolTip(this.components);
+            this.XIntervalTip = new System.Windows.Forms.ToolTip(this.components);
+            this.YMinTip = new System.Windows.Forms.ToolTip(this.components);
+            this.YMaxTip = new System.Windows.Forms.ToolTip(this.components);
+            this.YIntervalTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YMin)).BeginInit();
@@ -675,6 +685,14 @@ namespace Assign4
             this.CubeButton.UseVisualStyleBackColor = true;
             this.CubeButton.Click += new System.EventHandler(this.CubeButton_Click);
             // 
+            // LinearMTip
+            // 
+            this.LinearMTip.ShowAlways = true;
+            // 
+            // LinearBTip
+            // 
+            this.LinearBTip.ShowAlways = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -797,6 +815,15 @@ namespace Assign4
         private System.Windows.Forms.TextBox CubeC;
         private System.Windows.Forms.TextBox CubeD;
         private System.Windows.Forms.Button CubeButton;
+        private System.Windows.Forms.ToolTip LinearMTip;
+        private System.Windows.Forms.ToolTip LinearBTip;
+        private System.Windows.Forms.ToolTip LinearGraphTip;
+        private System.Windows.Forms.ToolTip XMinTip;
+        private System.Windows.Forms.ToolTip XMaxTip;
+        private System.Windows.Forms.ToolTip XIntervalTip;
+        private System.Windows.Forms.ToolTip YMinTip;
+        private System.Windows.Forms.ToolTip YMaxTip;
+        private System.Windows.Forms.ToolTip YIntervalTip;
     }
 }
 

@@ -20,6 +20,15 @@ namespace Assign4
             InitializeComponent();
             //initial drawing based on what is in the numeric updowns
             DrawAxies();
+            LinearMTip.SetToolTip(LinearM, "This is the M value in the equation above or the slope");
+            LinearBTip.SetToolTip(LinearB, "This is the b value in the equation above or the y-intercept");
+            LinearGraphTip.SetToolTip(LinearEqButton, "Click this button to graph the linear equation on the graph");
+            XMinTip.SetToolTip(XMin, "This numeric updown controls the minimum X-Value that will be on the graph");
+            YMinTip.SetToolTip(YMin, "This numeric updown controls the minimum Y-Value that will be on the graph");
+            XMaxTip.SetToolTip(XMax, "This numeric updown controls the maximum X-Value that will be on the graph");
+            YMaxTip.SetToolTip(YMax, "This numeric updown controls the maximum Y-Value that will be on the graph");
+            XIntervalTip.SetToolTip(XInterval, "This controls the intervals of the tick marks for X-Values on the graph");
+            YIntervalTip.SetToolTip(YInterval, "This controls the intervals of the tick marks for Y-Values on the graph");
         }
         //just resets the graph so that it can be redrawn on
         public void refresh()
