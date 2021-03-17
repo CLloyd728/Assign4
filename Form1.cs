@@ -38,6 +38,19 @@ namespace Assign4
             YMaxTip.SetToolTip(YMax, "This numeric updown controls the maximum Y-Value that will be on the graph");
             XIntervalTip.SetToolTip(XInterval, "This controls the intervals of the tick marks for X-Values on the graph");
             YIntervalTip.SetToolTip(YInterval, "This controls the intervals of the tick marks for Y-Values on the graph");
+            QuadraticA.SetToolTip(QuadA, "This is the A value shown in Quadratic the equation above.");
+            QuadraticB.SetToolTip(QuadB, "This is the B value shown in Quadratic the equation above.");
+            QuadraticC.SetToolTip(QuadC, "This is the C value shown in Quadratic the equation above.");
+            CubicATip.SetToolTip(CubeA, "This is the A value shown in the cubic equation above");
+            CubicBTip.SetToolTip(CubeB, "This is the B value shown in the cubic equation above");
+            CubicCTip.SetToolTip(CubeC, "This is the C value shown in the cubic equation above");
+            CubicDTip.SetToolTip(CubeD, "This is the D value shown in the cubic equation above");
+            CircleHTip.SetToolTip(CircleH, "This is the H value shown above in the cirlce eqauton");
+            CircleKTip.SetToolTip(CircleK, "This is the K value shown above in the circle equation");
+            CircleRTip.SetToolTip(CircleR, "This the the R value shown above in the circle equaton");
+            QuadraticButtonTip.SetToolTip(QuadButton, "Click this button to graph the quadratic equation you have entered");
+            CubicButtonTip.SetToolTip(CubeButton, "Click this button to graph the cubic equation you have entered");
+            CircleButtonTip.SetToolTip(CircleButton, "Click this button to graph the cirlce you have specified in the equation");
         }
         //just resets the graph so that it can be redrawn on
         public void refresh()

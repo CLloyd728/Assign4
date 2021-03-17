@@ -89,6 +89,19 @@ namespace Assign4
             this.YMinTip = new System.Windows.Forms.ToolTip(this.components);
             this.YMaxTip = new System.Windows.Forms.ToolTip(this.components);
             this.YIntervalTip = new System.Windows.Forms.ToolTip(this.components);
+            this.QuadraticA = new System.Windows.Forms.ToolTip(this.components);
+            this.QuadraticB = new System.Windows.Forms.ToolTip(this.components);
+            this.QuadraticC = new System.Windows.Forms.ToolTip(this.components);
+            this.CubicATip = new System.Windows.Forms.ToolTip(this.components);
+            this.CubicBTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CubicCTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CubicDTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CircleHTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CircleKTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CircleRTip = new System.Windows.Forms.ToolTip(this.components);
+            this.QuadraticButtonTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CubicButtonTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CircleButtonTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Graph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YMin)).BeginInit();
@@ -687,11 +700,144 @@ namespace Assign4
             // 
             // LinearMTip
             // 
+            this.LinearMTip.AutoPopDelay = 5000;
+            this.LinearMTip.InitialDelay = 50;
+            this.LinearMTip.ReshowDelay = 100;
             this.LinearMTip.ShowAlways = true;
             // 
             // LinearBTip
             // 
+            this.LinearBTip.AutoPopDelay = 5000;
+            this.LinearBTip.InitialDelay = 50;
+            this.LinearBTip.ReshowDelay = 100;
             this.LinearBTip.ShowAlways = true;
+            // 
+            // LinearGraphTip
+            // 
+            this.LinearGraphTip.AutoPopDelay = 5000;
+            this.LinearGraphTip.InitialDelay = 50;
+            this.LinearGraphTip.ReshowDelay = 100;
+            // 
+            // XMinTip
+            // 
+            this.XMinTip.AutoPopDelay = 5000;
+            this.XMinTip.InitialDelay = 50;
+            this.XMinTip.ReshowDelay = 100;
+            // 
+            // XMaxTip
+            // 
+            this.XMaxTip.AutoPopDelay = 5000;
+            this.XMaxTip.InitialDelay = 50;
+            this.XMaxTip.ReshowDelay = 100;
+            // 
+            // XIntervalTip
+            // 
+            this.XIntervalTip.AutoPopDelay = 5000;
+            this.XIntervalTip.InitialDelay = 50;
+            this.XIntervalTip.ReshowDelay = 100;
+            // 
+            // YMinTip
+            // 
+            this.YMinTip.AutoPopDelay = 5000;
+            this.YMinTip.InitialDelay = 50;
+            this.YMinTip.ReshowDelay = 100;
+            // 
+            // YMaxTip
+            // 
+            this.YMaxTip.AutoPopDelay = 5000;
+            this.YMaxTip.InitialDelay = 50;
+            this.YMaxTip.ReshowDelay = 100;
+            // 
+            // YIntervalTip
+            // 
+            this.YIntervalTip.AutoPopDelay = 5000;
+            this.YIntervalTip.InitialDelay = 50;
+            this.YIntervalTip.ReshowDelay = 100;
+            // 
+            // QuadraticA
+            // 
+            this.QuadraticA.AutoPopDelay = 5000;
+            this.QuadraticA.InitialDelay = 50;
+            this.QuadraticA.ReshowDelay = 100;
+            this.QuadraticA.ShowAlways = true;
+            // 
+            // QuadraticB
+            // 
+            this.QuadraticB.AutoPopDelay = 5000;
+            this.QuadraticB.InitialDelay = 50;
+            this.QuadraticB.ReshowDelay = 100;
+            this.QuadraticB.ShowAlways = true;
+            // 
+            // QuadraticC
+            // 
+            this.QuadraticC.AutoPopDelay = 5000;
+            this.QuadraticC.InitialDelay = 50;
+            this.QuadraticC.ReshowDelay = 100;
+            this.QuadraticC.ShowAlways = true;
+            // 
+            // CubicATip
+            // 
+            this.CubicATip.AutoPopDelay = 5000;
+            this.CubicATip.InitialDelay = 50;
+            this.CubicATip.ReshowDelay = 100;
+            this.CubicATip.ShowAlways = true;
+            // 
+            // CubicBTip
+            // 
+            this.CubicBTip.AutoPopDelay = 5000;
+            this.CubicBTip.InitialDelay = 50;
+            this.CubicBTip.ReshowDelay = 100;
+            this.CubicBTip.ShowAlways = true;
+            // 
+            // CubicCTip
+            // 
+            this.CubicCTip.AutoPopDelay = 5000;
+            this.CubicCTip.InitialDelay = 50;
+            this.CubicCTip.ReshowDelay = 100;
+            this.CubicCTip.ShowAlways = true;
+            // 
+            // CubicDTip
+            // 
+            this.CubicDTip.AutoPopDelay = 5000;
+            this.CubicDTip.InitialDelay = 50;
+            this.CubicDTip.ReshowDelay = 100;
+            this.CubicDTip.ShowAlways = true;
+            // 
+            // CircleHTip
+            // 
+            this.CircleHTip.AutoPopDelay = 5000;
+            this.CircleHTip.InitialDelay = 50;
+            this.CircleHTip.ReshowDelay = 100;
+            // 
+            // CircleKTip
+            // 
+            this.CircleKTip.AutoPopDelay = 5000;
+            this.CircleKTip.InitialDelay = 50;
+            this.CircleKTip.ReshowDelay = 100;
+            // 
+            // CircleRTip
+            // 
+            this.CircleRTip.AutoPopDelay = 5000;
+            this.CircleRTip.InitialDelay = 50;
+            this.CircleRTip.ReshowDelay = 100;
+            // 
+            // QuadraticButtonTip
+            // 
+            this.QuadraticButtonTip.AutoPopDelay = 5000;
+            this.QuadraticButtonTip.InitialDelay = 50;
+            this.QuadraticButtonTip.ReshowDelay = 100;
+            // 
+            // CubicButtonTip
+            // 
+            this.CubicButtonTip.AutoPopDelay = 5000;
+            this.CubicButtonTip.InitialDelay = 50;
+            this.CubicButtonTip.ReshowDelay = 100;
+            // 
+            // CircleButtonTip
+            // 
+            this.CircleButtonTip.AutoPopDelay = 5000;
+            this.CircleButtonTip.InitialDelay = 50;
+            this.CircleButtonTip.ReshowDelay = 100;
             // 
             // Form1
             // 
@@ -824,6 +970,19 @@ namespace Assign4
         private System.Windows.Forms.ToolTip YMinTip;
         private System.Windows.Forms.ToolTip YMaxTip;
         private System.Windows.Forms.ToolTip YIntervalTip;
+        private System.Windows.Forms.ToolTip QuadraticA;
+        private System.Windows.Forms.ToolTip QuadraticB;
+        private System.Windows.Forms.ToolTip QuadraticC;
+        private System.Windows.Forms.ToolTip CubicATip;
+        private System.Windows.Forms.ToolTip CubicBTip;
+        private System.Windows.Forms.ToolTip CubicCTip;
+        private System.Windows.Forms.ToolTip CubicDTip;
+        private System.Windows.Forms.ToolTip CircleHTip;
+        private System.Windows.Forms.ToolTip CircleKTip;
+        private System.Windows.Forms.ToolTip CircleRTip;
+        private System.Windows.Forms.ToolTip QuadraticButtonTip;
+        private System.Windows.Forms.ToolTip CubicButtonTip;
+        private System.Windows.Forms.ToolTip CircleButtonTip;
     }
 }
 
