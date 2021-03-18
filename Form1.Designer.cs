@@ -234,7 +234,7 @@ namespace Assign4
             -2147483648});
             this.YMin.Name = "YMin";
             this.YMin.Size = new System.Drawing.Size(120, 20);
-            this.YMin.TabIndex = 16;
+            this.YMin.TabIndex = 18;
             this.YMin.Value = new decimal(new int[] {
             100,
             0,
@@ -263,7 +263,7 @@ namespace Assign4
             -2147483648});
             this.XMax.Name = "XMax";
             this.XMax.Size = new System.Drawing.Size(120, 20);
-            this.XMax.TabIndex = 17;
+            this.XMax.TabIndex = 16;
             this.XMax.Value = new decimal(new int[] {
             100,
             0,
@@ -292,7 +292,7 @@ namespace Assign4
             1114112});
             this.XInterval.Name = "XInterval";
             this.XInterval.Size = new System.Drawing.Size(120, 20);
-            this.XInterval.TabIndex = 18;
+            this.XInterval.TabIndex = 17;
             this.XInterval.Value = new decimal(new int[] {
             10,
             0,
@@ -363,7 +363,7 @@ namespace Assign4
             this.LinearEqButton.Location = new System.Drawing.Point(1235, 101);
             this.LinearEqButton.Name = "LinearEqButton";
             this.LinearEqButton.Size = new System.Drawing.Size(75, 23);
-            this.LinearEqButton.TabIndex = 21;
+            this.LinearEqButton.TabIndex = 31;
             this.LinearEqButton.Text = "Graph";
             this.LinearEqButton.UseVisualStyleBackColor = true;
             this.LinearEqButton.Click += new System.EventHandler(this.LinearGraphButton_Click);
@@ -405,7 +405,7 @@ namespace Assign4
             this.LinearB.ReadOnly = true;
             this.LinearB.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.LinearB.Size = new System.Drawing.Size(78, 20);
-            this.LinearB.TabIndex = 29;
+            this.LinearB.TabIndex = 30;
             this.LinearB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LinearB_KeyDown);
             // 
             // LinearM
@@ -415,7 +415,7 @@ namespace Assign4
             this.LinearM.ReadOnly = true;
             this.LinearM.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.LinearM.Size = new System.Drawing.Size(78, 20);
-            this.LinearM.TabIndex = 30;
+            this.LinearM.TabIndex = 29;
             this.LinearM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LinearM_KeyDown);
             // 
             // label11
@@ -442,9 +442,11 @@ namespace Assign4
             // 
             this.QuadA.Location = new System.Drawing.Point(951, 230);
             this.QuadA.Name = "QuadA";
+            this.QuadA.ReadOnly = true;
             this.QuadA.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.QuadA.Size = new System.Drawing.Size(78, 20);
             this.QuadA.TabIndex = 33;
+            this.QuadA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuadA_KeyDown);
             // 
             // label13
             // 
@@ -460,9 +462,11 @@ namespace Assign4
             // 
             this.QuadB.Location = new System.Drawing.Point(1094, 230);
             this.QuadB.Name = "QuadB";
+            this.QuadB.ReadOnly = true;
             this.QuadB.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.QuadB.Size = new System.Drawing.Size(78, 20);
             this.QuadB.TabIndex = 35;
+            this.QuadB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuadB_KeyDown);
             // 
             // label14
             // 
@@ -478,9 +482,11 @@ namespace Assign4
             // 
             this.QuadC.Location = new System.Drawing.Point(1232, 230);
             this.QuadC.Name = "QuadC";
+            this.QuadC.ReadOnly = true;
             this.QuadC.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.QuadC.Size = new System.Drawing.Size(78, 20);
             this.QuadC.TabIndex = 37;
+            this.QuadC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuadC_KeyDown);
             // 
             // QuadButton
             // 
@@ -516,9 +522,11 @@ namespace Assign4
             // 
             this.CircleH.Location = new System.Drawing.Point(906, 516);
             this.CircleH.Name = "CircleH";
+            this.CircleH.ReadOnly = true;
             this.CircleH.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CircleH.Size = new System.Drawing.Size(78, 20);
-            this.CircleH.TabIndex = 41;
+            this.CircleH.TabIndex = 44;
+            this.CircleH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CircleH_KeyDown);
             // 
             // label17
             // 
@@ -554,9 +562,11 @@ namespace Assign4
             // 
             this.CircleK.Location = new System.Drawing.Point(1089, 516);
             this.CircleK.Name = "CircleK";
+            this.CircleK.ReadOnly = true;
             this.CircleK.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CircleK.Size = new System.Drawing.Size(78, 20);
             this.CircleK.TabIndex = 45;
+            this.CircleK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CircleK_KeyDown);
             // 
             // label20
             // 
@@ -592,9 +602,11 @@ namespace Assign4
             // 
             this.CircleR.Location = new System.Drawing.Point(1224, 516);
             this.CircleR.Name = "CircleR";
+            this.CircleR.ReadOnly = true;
             this.CircleR.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CircleR.Size = new System.Drawing.Size(78, 20);
             this.CircleR.TabIndex = 49;
+            this.CircleR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CircleR_KeyDown);
             // 
             // CircleButton
             // 
@@ -630,9 +642,11 @@ namespace Assign4
             // 
             this.CubeA.Location = new System.Drawing.Point(858, 369);
             this.CubeA.Name = "CubeA";
+            this.CubeA.ReadOnly = true;
             this.CubeA.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CubeA.Size = new System.Drawing.Size(78, 20);
-            this.CubeA.TabIndex = 53;
+            this.CubeA.TabIndex = 39;
+            this.CubeA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CubeA_KeyDown);
             // 
             // label25
             // 
@@ -648,9 +662,11 @@ namespace Assign4
             // 
             this.CubeB.Location = new System.Drawing.Point(1004, 369);
             this.CubeB.Name = "CubeB";
+            this.CubeB.ReadOnly = true;
             this.CubeB.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CubeB.Size = new System.Drawing.Size(78, 20);
-            this.CubeB.TabIndex = 55;
+            this.CubeB.TabIndex = 40;
+            this.CubeB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CubeB_KeyDown);
             // 
             // label26
             // 
@@ -676,24 +692,28 @@ namespace Assign4
             // 
             this.CubeC.Location = new System.Drawing.Point(1139, 369);
             this.CubeC.Name = "CubeC";
+            this.CubeC.ReadOnly = true;
             this.CubeC.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CubeC.Size = new System.Drawing.Size(78, 20);
-            this.CubeC.TabIndex = 57;
+            this.CubeC.TabIndex = 41;
+            this.CubeC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CubeC_KeyDown);
             // 
             // CubeD
             // 
             this.CubeD.Location = new System.Drawing.Point(1278, 369);
             this.CubeD.Name = "CubeD";
+            this.CubeD.ReadOnly = true;
             this.CubeD.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CubeD.Size = new System.Drawing.Size(78, 20);
-            this.CubeD.TabIndex = 59;
+            this.CubeD.TabIndex = 42;
+            this.CubeD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CubeD_KeyDown);
             // 
             // CubeButton
             // 
             this.CubeButton.Location = new System.Drawing.Point(1362, 369);
             this.CubeButton.Name = "CubeButton";
             this.CubeButton.Size = new System.Drawing.Size(75, 23);
-            this.CubeButton.TabIndex = 60;
+            this.CubeButton.TabIndex = 43;
             this.CubeButton.Text = "Graph";
             this.CubeButton.UseVisualStyleBackColor = true;
             this.CubeButton.Click += new System.EventHandler(this.CubeButton_Click);
