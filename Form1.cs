@@ -400,69 +400,6 @@ namespace Assign4
         {
             return (m * x) + b;
         }
-        //makes sure only things I want can be input
-        private void LinearM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                LinearM.Text = LinearM.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (LinearM.Text.Length == 0)
-                    LinearM.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (LinearM.Text.Length == 0)
-                    LinearM.Text = "0.";
-                else if (LinearM.Text.Contains("."))
-                    return;
-                LinearM.Text = LinearM.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (LinearM.Text.Length == 0)
-                    return;
-                else
-                {
-                    LinearM.Text = LinearM.Text.Substring(0, LinearM.Text.Length - 1);
-                }
-            }
-        }
-        //makes sure only things I want can be input
-        private void LinearB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                LinearB.Text = LinearB.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (LinearB.Text.Length == 0)
-                    LinearB.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (LinearB.Text.Length == 0)
-                {
-                    LinearB.Text = "0.";
-                    return;
-                }
-                else if (LinearB.Text.Contains("."))
-                    return;
-                LinearB.Text = LinearB.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (LinearB.Text.Length == 0)
-                    return;
-                else
-                {
-                    LinearB.Text = LinearB.Text.Substring(0, LinearB.Text.Length - 1);
-                }
-            }
-        }
 
         private void QuadButton_Click(object sender, EventArgs e)
         {
@@ -649,337 +586,100 @@ namespace Assign4
             Graph.Image = image;
             return;
         }
-
+        //makes sure only things I want can be input
+        private void LinearM_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyScreen(LinearM, e);
+        }
+        //makes sure only things I want can be input
+        private void LinearB_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyScreen(LinearB, e);
+        }
         private void QuadA_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                QuadA.Text = QuadA.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (QuadA.Text.Length == 0)
-                    QuadA.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (QuadA.Text.Length == 0)
-                {
-                    QuadA.Text = "0.";
-                    return;
-                }
-                else if (QuadA.Text.Contains("."))
-                    return;
-                QuadA.Text = QuadA.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (QuadA.Text.Length == 0)
-                    return;
-                else
-                {
-                    QuadA.Text = QuadA.Text.Substring(0, QuadA.Text.Length - 1);
-                }
-            }
+            KeyScreen(QuadA, e);
         }
 
         private void QuadB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                QuadB.Text = QuadB.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (QuadB.Text.Length == 0)
-                    QuadB.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (QuadB.Text.Length == 0)
-                {
-                    QuadB.Text = "0.";
-                    return;
-                }
-                else if (QuadB.Text.Contains("."))
-                    return;
-                QuadB.Text = QuadB.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (QuadB.Text.Length == 0)
-                    return;
-                else
-                {
-                    QuadB.Text = QuadB.Text.Substring(0, QuadB.Text.Length - 1);
-                }
-            }
+            KeyScreen(QuadB, e);
         }
 
         private void QuadC_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                QuadC.Text = QuadC.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (QuadC.Text.Length == 0)
-                    QuadC.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (QuadC.Text.Length == 0)
-                {
-                    QuadC.Text = "0.";
-                    return;
-                }
-                else if (QuadC.Text.Contains("."))
-                    return;
-                QuadC.Text = QuadC.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (QuadC.Text.Length == 0)
-                    return;
-                else
-                {
-                    QuadC.Text = QuadC.Text.Substring(0, QuadC.Text.Length - 1);
-                }
-            }
+            KeyScreen(QuadC, e);
         }
 
         private void CubeA_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                CubeA.Text = CubeA.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (CubeA.Text.Length == 0)
-                    CubeA.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (CubeA.Text.Length == 0)
-                {
-                    CubeA.Text = "0.";
-                    return;
-                }
-                else if (CubeA.Text.Contains("."))
-                    return;
-                CubeA.Text = CubeA.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (CubeA.Text.Length == 0)
-                    return;
-                else
-                {
-                    CubeA.Text = CubeA.Text.Substring(0, CubeA.Text.Length - 1);
-                }
-            }
+            KeyScreen(CubeA, e);
         }
 
         private void CubeB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                CubeB.Text = CubeB.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (CubeB.Text.Length == 0)
-                    CubeB.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (CubeB.Text.Length == 0)
-                {
-                    CubeB.Text = "0.";
-                    return;
-                }
-                else if (CubeB.Text.Contains("."))
-                    return;
-                CubeB.Text = CubeB.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (CubeB.Text.Length == 0)
-                    return;
-                else
-                {
-                    CubeB.Text = CubeB.Text.Substring(0, CubeB.Text.Length - 1);
-                }
-            }
+            KeyScreen(CubeB, e);
         }
 
         private void CubeC_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                CubeC.Text = CubeC.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (CubeC.Text.Length == 0)
-                    CubeC.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (CubeC.Text.Length == 0)
-                {
-                    CubeC.Text = "0.";
-                    return;
-                }
-                else if (CubeC.Text.Contains("."))
-                    return;
-                CubeC.Text = CubeC.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (CubeC.Text.Length == 0)
-                    return;
-                else
-                {
-                    CubeC.Text = CubeC.Text.Substring(0, CubeC.Text.Length - 1);
-                }
-            }
+            KeyScreen(CubeC, e);
         }
 
         private void CubeD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                CubeD.Text = CubeD.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (CubeD.Text.Length == 0)
-                    CubeD.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (CubeD.Text.Length == 0)
-                {
-                    CubeD.Text = "0.";
-                    return;
-                }
-                else if (CubeD.Text.Contains("."))
-                    return;
-                CubeD.Text = CubeD.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (CubeD.Text.Length == 0)
-                    return;
-                else
-                {
-                    CubeD.Text = CubeD.Text.Substring(0, CubeD.Text.Length - 1);
-                }
-            }
+            KeyScreen(CubeD, e);
         }
 
         private void CircleH_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                CircleH.Text = CircleH.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (CircleH.Text.Length == 0)
-                    CircleH.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (CircleH.Text.Length == 0)
-                {
-                    CircleH.Text = "0.";
-                    return;
-                }
-                else if (CircleH.Text.Contains("."))
-                    return;
-                CircleH.Text = CircleH.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (CircleH.Text.Length == 0)
-                    return;
-                else
-                {
-                    CircleH.Text = CircleH.Text.Substring(0, CircleH.Text.Length - 1);
-                }
-            }
+            KeyScreen(CircleH, e);
         }
 
         private void CircleK_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue > 47 && e.KeyValue < 58)
-            {
-                CircleK.Text = CircleK.Text + (char)e.KeyValue;
-            }
-            else if (e.KeyValue == 189)
-            {
-                if (CircleK.Text.Length == 0)
-                    CircleK.Text = "-";
-            }
-            else if (e.KeyValue == 190)
-            {
-                if (CircleK.Text.Length == 0)
-                {
-                    CircleK.Text = "0.";
-                    return;
-                }
-                else if (CircleK.Text.Contains("."))
-                    return;
-                CircleK.Text = CircleK.Text + ".";
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                if (CircleK.Text.Length == 0)
-                    return;
-                else
-                {
-                    CircleK.Text = CircleK.Text.Substring(0, CircleK.Text.Length - 1);
-                }
-            }
+            KeyScreen(CircleK, e);
         }
 
         private void CircleR_KeyDown(object sender, KeyEventArgs e)
         {
+            KeyScreen(CircleR, e);
+        }
+        //the function for screening all the text fields
+        public void KeyScreen(TextBox txt, KeyEventArgs e)
+        {
             if (e.KeyValue > 47 && e.KeyValue < 58)
             {
-                CircleR.Text = CircleR.Text + (char)e.KeyValue;
+                txt.Text = txt.Text + (char)e.KeyValue;
             }
             else if (e.KeyValue == 189)
             {
-                if (CircleR.Text.Length == 0)
-                    CircleR.Text = "-";
+                if (txt.Text.Length == 0)
+                    txt.Text = "-";
             }
             else if (e.KeyValue == 190)
             {
-                if (CircleR.Text.Length == 0)
+                if (txt.Text.Length == 0)
                 {
-                    CircleR.Text = "0.";
+                    txt.Text = "0.";
                     return;
                 }
-                else if (CircleR.Text.Contains("."))
+                else if (txt.Text.Contains("."))
                     return;
-                CircleR.Text = CircleR.Text + ".";
+                txt.Text = txt.Text + ".";
             }
             if (e.KeyCode == Keys.Back)
             {
-                if (CircleR.Text.Length == 0)
+                if (txt.Text.Length == 0)
                     return;
                 else
                 {
-                    CircleR.Text = CircleR.Text.Substring(0, CircleR.Text.Length - 1);
+                    txt.Text = txt.Text.Substring(0, txt.Text.Length - 1);
                 }
             }
         }
     }
+
 
     public static class Extensions
     {
